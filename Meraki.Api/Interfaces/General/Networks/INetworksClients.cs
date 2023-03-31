@@ -22,7 +22,6 @@ public interface INetworksClients
 	/// <param name="recentDeviceConnections">Filters clients based on recent connection type. Can be one of 'Wired' or 'Wireless'.</param>
 	[ApiOperationId("getNetworkClients")]
 	[Get("/networks/{networkId}/clients")]
-	[QueryUriFormat(UriFormat.Unescaped)]
 	Task<List<Client>> GetNetworkClientsAsync(
 		string networkId,
 		string t0 = null!,
@@ -48,7 +47,6 @@ public interface INetworksClients
 	/// <param name="clientId">The client id</param>
 	[ApiOperationId("getNetworkClient")]
 	[Get("/networks/{networkId}/clients/{clientId}")]
-	[QueryUriFormat(UriFormat.Unescaped)]
 	Task<Client> GetNetworkClientAsync(
 		[AliasAs("networkId")] string networkId,
 		[AliasAs("clientId")] string clientId,
