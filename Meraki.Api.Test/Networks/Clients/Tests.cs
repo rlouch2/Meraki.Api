@@ -20,4 +20,18 @@ public class Tests : MerakiClientTest
 		_ = result.Should().BeOfType<List<Client>>();
 		_ = result.Should().NotBeNull();
 	}
+
+	public async Task GetClientAsync_Succeeds()
+	{
+		var network = await GetFirstNetworkAsync()
+			.ConfigureAwait(false);
+
+		var result = await TestMerakiClient
+			.Networks
+			.Clients
+			.GetNetworkClientAsync(network.Id, Configuration.TestMac)
+			.ConfigureAwait(false);
+		_ = result.Should().BeOfType<List<Client>>();
+		_ = result.Should().NotBeNull();
+	}
 }
